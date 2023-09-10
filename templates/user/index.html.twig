@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+
+<div>
+    <div {{ react_component('Navbar')}}></div> 
+   
+ {# Create a new array of objects with desired properties #}
+    {% set formattedUsers = [] %}
+    {% for user in users %}
+        {% set formattedUser = {
+            'id': user.id,
+            'email': user.email,
+            'roles': user.roles,
+            'password': user.password,
+            'Cin': user.Cin,
+            'firstname': user.firstname,
+            'lastname': user.lastname,
+            'Naissance': user.Naissance ? user.Naissance|date('Y-m-d') : '', 
+            'Telephone': user.Telephone,
+            'ipAddresses': user.ipAddresses.toArray(),
+        } %}
+        {% set formattedUsers = formattedUsers|merge([formattedUser]) %}
+    {% endfor %}
+     
+    <div className="flex items-center justify-center" {{ react_component('UserTable', { 'users': formattedUsers }) }}></div>
+</div>
+
+{% endblock %}

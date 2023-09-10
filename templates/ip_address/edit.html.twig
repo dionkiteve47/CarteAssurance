@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IPAddress{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    
+      .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+            background-color: #f2f2f2; /* Background color */
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Adjust as needed */
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div {{react_component('Navbar')}}></div>
+<div class="main-container">
+    <div class="form-container">
+    <h1>Edit IPAddress</h1>
+
+    {{ include('ip_address/_form.html.twig', {'button_label': 'Update'}) }}
+
+    </div>
+    </div>
+{% endblock %}

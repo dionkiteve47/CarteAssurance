@@ -3,3 +3,43 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+app_user_index:
+    path: /user/
+    controller: App\Controller\UserController::index
+
+app_i_p_address_index:
+    path: /i/p/address/
+    controller: App\Controller\IPAddressController::index    
+search_users:
+    path: /search
+    controller: App\Controller\UserController::searchUsers
+    methods: ['GET', 'POST']
+search_addresses:
+    path: /searchip
+    controller: App\Controller\IPAddressController::searchAddresses
+    methods: ['GET', 'POST']
+user_add_ip_address:
+    path: /user/{id}/add-ip-address
+    controller: App\Controller\UserController::addIPAddress
+    methods: [GET, POST]
+ping_test:
+    path: '/user/{id}/ping-test'
+    controller: App\Controller\UserController::pingTest
+    methods: ['GET']
+ping_address_test:
+    path: '/i/p/address/{address}/ping-test'
+    controller: App\Controller\IPAddressController::pingAddressTest
+    methods: ['GET']    
+test_rapide:
+    path: '/test-rapide'
+    controller: App\Controller\UserController::testRapide
+    methods: ['GET']  
+pings_test:
+    path: '/pings-test/{id}'
+    controller: 'App\Controller\UserController::pingsTest'     
+app_user_delete:
+    path: /user/delete/{id}
+    controller: App\Controller\UserController::delete
+
+
+

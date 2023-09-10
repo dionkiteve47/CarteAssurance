@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Availability Test Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ip-entry {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .ip-address {
+            font-weight: bold;
+        }
+        .available {
+            color: green;
+        }
+        .unavailable {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IP Availability Test Results</h1>
+        {% for ipAddress, availability in availabilityResults %}
+            <div class="ip-entry">
+                <p class="ip-address">{{ ipAddress }}</p>
+                <p class="{{ availability == 'Available' ? 'available' : 'unavailable' }}">
+                    {{ availability }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

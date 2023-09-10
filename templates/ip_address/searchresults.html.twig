@@ -1,0 +1,20 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+{% block body %}
+<div {{react_component('Navbar')}}></div>
+ {% set formattedIPS = [] %}
+    {% for ip in res %}
+        {% set formattedIP = {
+            'id': ip.id,
+            'address': ip.address,
+            'mask': ip.mask,
+        } %}
+        {% set formattedIPS = formattedIPS|merge([formattedIP]) %}
+    {% endfor %}
+     
+    <div className="flex items-center justify-center" {{ react_component('IPAddressTable', { 'ipaddresses': formattedIPS }) }}></div>
+    
+</div>
+{% endblock %}

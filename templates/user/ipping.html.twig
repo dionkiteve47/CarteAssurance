@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body%}
+<div {{react_component('Navbar')}}></div>
+    
+      {% set formattedIPS = [] %}
+      {% dump(user) %}
+    {% for ip in user.ipAddresses %}
+        {% set formattedIP = {
+            'id': ip.id,
+            'address': ip.address,
+            'mask': ip.mask,
+        } %}
+        {% set formattedIPS = formattedIPS|merge([formattedIP]) %}
+    {% endfor %}
+    {% set formattedUser = [] %}
+        {% set formattedUser = {
+            'id': user.id,
+            'email': user.email,
+            'roles': user.roles,
+            'password': user.password,
+            'Cin': user.Cin,
+            'firstname': user.firstname,
+            'lastname': user.lastname,
+            'Naissance': user.Naissance ? user.Naissance|date('Y-m-d') : '', 
+            'Telephone': user.Telephone,
+            'ipAddresses': user.ipAddresses.toArray(),
+        } %}
+     
+    <div className="flex items-center justify-center" {{react_component('UserAddressTable', {'ipaddresses': formattedIPS, 'user': formattedUser})}}></div>
+    
+
+{% endblock %}
+
+

@@ -1,0 +1,130 @@
+
+@font-face {
+    font-family: 'HT Grostek';
+    src: url('../../fonts/ht-grostek/ht-grostek-regular.otf') format('opentype');
+    /* Add more font formats if available */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use the custom font in your styles */
+body {
+    font-family: 'HT Grostek', sans-serif;
+}
+        h1 {
+            color: #007bff; /* Blue color */
+            font-size: 36px;
+            text-align: left;
+            padding-left: 20px;
+            padding-bottom: 20px;
+            
+        }
+    
+        /* Custom background color for the form */
+        .form-wrapper {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 90%;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-group .form-control {
+            margin-bottom: 10px;
+        }
+        
+        /* Custom background color for form fields */
+        .form-group {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        /* Grid layout for .form-group with two columns */
+        .form-group.grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+            
+            display: block;
+        }
+
+        /* Custom table style for checkboxes */
+        .checkbox-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .checkbox-table th {
+            background-color: #f2f2f2;
+        }
+
+        .checkbox-table td {
+            width: calc(100% / 3); /* Distribute table cells in 3 columns */
+            box-sizing: border-box; /* Include padding and border in the width calculation */
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .checkbox-table td label {
+            display: block;
+            cursor: pointer;
+        }
+        /* Button styles */
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            padding-left: 20px;
+        }
+        .form-control-n {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-top:8px;
+            padding-bottom:8px;
+            padding-left: 15px;
+            padding-right: 50px;
+            margin-right:100px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+        
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .inner-container {
+            padding-left: 1%;
+            padding-right: 10%;
+        }
+        .flex-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 2%;
+        }
+        .flex-container a {
+        margin-right: 2%; /* Adjust the value as needed for the desired space */
+        }
+    

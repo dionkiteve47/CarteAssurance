@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IPAddress{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Add any custom styles here */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+            background-color: #f2f2f2; /* Background color */
+        }
+
+        .content-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Adjust as needed */
+            width: 100%;
+        }
+        .content-container a {
+            margin: 10px;
+            text-decoration: none;
+            border: 1px solid #007bff; 
+            padding: 5px 10px;
+            color: #007bff; 
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            
+        }
+
+        .content-container a:hover {
+            background-color: #f2f2f2;
+            color: #000;
+        }
+        .actions-container {
+            justify-content: center; 
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+        .content-container .links-row {
+            display: flex;
+            justify-content: space-between;
+            width: 75%;
+            margin-top: 20px;
+        }
+        .table {
+            margin-left: 20px;
+            width: 70%;
+        }
+
+        .table th {
+            text-align: left;
+            width: 50%;
+            padding-right: 10px;
+        }
+
+        .table td {
+            text-align: left;
+            width: 50%;
+            padding-right: 10px;
+        }
+        .table tr {
+            margin-bottom: 20px; /* Add space between rows */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div {{react_component('Navbar')}}></div>
+    <div class="main-container">
+        <div class="content-container">
+            <h1>Détails d'addresse:</h1>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ i_p_address.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ i_p_address.Address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mask</th>
+                        <td>{{ i_p_address.Mask }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="actions-container">
+            <div class="links-row">
+                
+                <a href="{{ path('app_i_p_address_edit', {'id': i_p_address.id}) }}" class="blue-link">Modifier</a>
+                {{ include('ip_address/_delete_form.html.twig') }}
+                <a href="{{ path('app_i_p_address_index') }}" class="blue-link">Précedent</a>
+            </div>
+            <div>
+        </div>
+        
+    </div>
+{% endblock %}

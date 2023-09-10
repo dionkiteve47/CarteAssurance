@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add IP Address{% endblock %}
+
+{% block body %}
+    <h1>Add IP Address</h1>
+    
+    {{ form_start(form) }}
+        {{ form_row(form.ipAddress) }}
+        <button type="submit">Add IP Address</button>
+    {{ form_end(form) }}
+{% endblock %}

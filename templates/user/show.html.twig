@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+{% block head%}
+
+ {% endblock %}
+
+{% block body %}
+<style>
+    .password-container {
+      width: 250px; /* Set the desired width for the container */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+     .td-addresse {
+      padding-left: 50px; /* Adjust the padding value as needed */
+       /* Adding borders for clarity */
+    }
+    .btn {
+      padding:10px;
+    }
+  </style>
+
+<div {{react_component('Navbar')}}></div>
+ <div class="form-wrapper">
+ <div style="display: flex; flex-direction: row;">
+    <h1 style="flex: 1;" >User</h1>
+    <div style="padding-top: 20px; padding-right: 20px">    
+   <form method="get" action="{{ path('ping_test', {'id': user.id}) }}">
+        <label for="timeout">Timeout (seconds):</label>
+        <input type="number" id="timeout" name="timeout" value="10" min="1" step="1">
+        <button type="submit" class="btn btn-primary">Ping Test</button>
+    </form>
+    </div>
+    </div>
+<div class="form-group grid-layout">
+            <div style="display: flex; flex-direction: row;">
+                <div style="flex: 1;"  >
+                  <p>Email</p>     
+                  <p>{{user.email}}</p> 
+                </div>
+                <div style="flex: 1;"  >
+                  <p>ID</p>     
+                  <p>{{user.id}}</p> 
+                </div>
+                <div style="flex: 1;"  >
+                  <p>Roles</p>     
+                  <p>{{user.roles  ? user.roles|json_encode : ''}}</p> 
+                </div>
+                </div>
+</div>
+<div class="form-group grid-layout">
+<div style="display: flex; flex-direction: row;">
+                <div style="flex: 1;"  >
+                  <p>First Name</p>     
+                  <p>{{user.firstname}}</p> 
+                </div>
+                <div style="flex: 1;"  >
+                  <p>Last Name</p>     
+                  <p>{{user.lastname}}</p> 
+                </div>
+                <div style="flex: 1;"  >
+                  <p>Date De Naissance</p>     
+                  <p> {{user.naissance ? user.Naissance|date('Y-m-d') : '' }}</p> 
+                </div>
+</div>
+</div>
+<div class="form-group grid-layout">
+<div style="display: flex; flex-direction: row;">
+                <div style="flex: 1;"  >
+                  <p>Carte D'identité</p>     
+                  <p>{{user.cin}}</p> 
+                </div>
+                <div style="flex: 1;"  >
+                  <p>Telephone</p>     
+                  <p>{{user.telephone}}</p> 
+                </div>
+                <div style="flex: 1;"  >
+                  <p>Clé Chiffré</p>        
+                  <p class="password-container">{{user.password}}</p> 
+                </div>
+</div>
+</div>
+
+<div class="form-group grid-layout">
+    <table class="table">
+        <tbody>
+        <tr>
+        <td>
+        <p style="padding-left: 50px"> List des Adresses Ip <p>
+        </td>
+        </tr>
+        {% if user.ipAddresses|length > 0 %}
+        {% for i in 0..(user.ipAddresses|length // 8) %}
+                    <tr>
+                            {% for j in 0..7 %}
+                                {% set index = 8 * i + j %}
+                                {% if user.ipAddresses[index] is defined %}
+                                    <td class="td-addresse">
+                                        {{ user.ipAddresses[index] }}
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                    </tr>       
+                        {% endfor %}    
+                    {% else %}
+                      <p>  No IP addresses found. </p>
+                        {% endif %}                    
+        </tbody>
+    </table>
+    </div>
+<div class="flex-container">
+    <a href="{{ path('app_user_index') }}" class="btn btn-primary">Revenir à liste</a>  
+    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">Modifier</a>
+</div>
+<div class="flex-container">
+    {{ include('user/_delete_form.html.twig') }}
+</div> 
+
+    
+    </div>
+{% endblock %}

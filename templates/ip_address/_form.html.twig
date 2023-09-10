@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New IPAddress{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    
+        /* Add any custom styles here */
+        
+        .grid-row {
+            display: grid;
+            grid-template-columns: 2fr 2fr; /* Adjust column widths as needed */
+            grid-gap: 10px; /* Adjust gap between label and input */
+            align-items: left;
+        }
+
+        .grid-label {
+            margin: 10px;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+        
+        .form-container button {
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 10px; /* Add right margin for spacing between buttons */
+        }
+
+        .form-container .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .form-container .buttons-container {
+            text-align: center;
+        }
+        .form-container button {
+            display: inline-block;
+            margin-top: 5px;
+            margin-right: 5px; /* Add right margin for spacing between buttons */
+            padding: 10px 20px; /* Add padding to the button */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+            <div  class="grid-container">
+                {{ form_start(form) }}  
+                <div class="form-group">
+                    <div class="grid-row">
+                        <div class="grid-label">
+                            {{ form_label(form.Address, 'Addresse IP:', {'label_attr': {'class': 'form-label'}}) }}
+                        </div>
+                        <div class="grid-input">
+                            {{ form_widget(form.Address, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="error-message">
+    {{ form_errors(form.Address) }}
+</div>
+               
+                <div class="form-group">
+                    <div class="grid-row">
+                        <div class="grid-label">
+                            {{ form_label(form.Mask, 'Masque d\'addresse:', {'label_attr': {'class': 'form-label'}}) }}
+                        </div>
+                        <div class="grid-input">
+                            {{ form_widget(form.Mask, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                 <div class="error-message">
+    {{ form_errors(form.Mask) }}
+</div>
+                
+                <div class="buttons-container">
+                    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                    <a href="{{ path('app_i_p_address_index') }}" class="back-link">Back to list</a>
+                    
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+            <style>
+    /* Your other styles... */
+    .error-message {
+        margin-top: 5px;
+        font-size: 14px;
+        color: red;
+        /* Add more styling as needed */
+    }
+</style>
+{% endblock %}

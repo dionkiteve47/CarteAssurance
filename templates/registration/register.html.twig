@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div {{react_component('Navbar')}}></div>
+<div class="register-container">
+   
+        <div class="picture">
+        <img src="{{ asset('build/images/prev.png') }}" alt="Your Image Alt Text">
+    </div>
+    <div>
+
+ <div>
+            <h1 style='padding : 20px;'>Créer Un Compte</h1>
+            <div class="form-container">
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm._token) }}
+    <div class="global-error">
+        {{ form_errors(registrationForm) }}
+    </div>
+     
+                {{ form_row(registrationForm.email, {
+                    'label': 'Addresse Email:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+                
+
+                {{ form_row(registrationForm.plainPassword, {
+                    'label': 'Mot De Passe:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+                
+                {{ form_row(registrationForm.lastname, {
+                    'label': 'Nom:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+              
+                {{ form_row(registrationForm.firstname, {
+                    'label': 'Prenom:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+                
+                {{ form_row(registrationForm.cin, {
+                    'label': 'Carte d\'identité:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+               
+                {{ form_row(registrationForm.naissance, {
+                    'label': 'Date De Naissance:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+               
+                {{ form_row(registrationForm.telephone, {
+                    'label': 'Telephone:',
+                    'label_attr': {'class': 'form-label'},
+                    'attr': {'class': 'form-row form-widget'}
+                }) }}
+                
+                <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .register-container {
+        display: flex; 
+        align-items: left;
+    }
+    .picture {
+        
+        width : 65%
+        /* Adjust other styling for the picture container */
+    }
+
+    .btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin : 5% 40%;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .form-container {
+       display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding-left:20px;
+    }
+    .form-widget {
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .form-label {
+        margin-bottom: 10px;
+    }
+
+    .form-row {
+        flex: 2;
+        text-align: right;
+        margin-right: 10px;
+    }
+    .global-error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        /* Add more styling as needed */
+    }
+
+</style>
+{% endblock %}
